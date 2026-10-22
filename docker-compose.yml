@@ -1,0 +1,73 @@
+services:
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-ecom}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change-this-local-password}
+      POSTGRES_DB: ${POSTGRES_DB:-ecom_dwh}
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-ecom} -d ${POSTGRES_DB:-ecom_dwh}"]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+  pipeline:
+    build:
+      context: .
+      dockerfile: Dockerfile.pipeline
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment: &pipeline_env
+      DB_HOST: postgres
+      DB_PORT: 5432
+      POSTGRES_USER: ${POSTGRES_USER:-ecom}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change-this-local-password}
+      POSTGRES_DB: ${POSTGRES_DB:-ecom_dwh}
+      MEDIACLOUD_API_KEY: ${MEDIACLOUD_API_KEY:-}
+      ALERT_WEBHOOK_URL: ${ALERT_WEBHOOK_URL:-}
+      COLLECTION_ID: ${COLLECTION_ID:-34412246}
+      MEDIA_PAGE_SIZE: ${MEDIA_PAGE_SIZE:-100}
+      MEDIA_MAX_PAGES_PER_QUERY: ${MEDIA_MAX_PAGES_PER_QUERY:-2}
+      MEDIA_REQUEST_DELAY_SECONDS: ${MEDIA_REQUEST_DELAY_SECONDS:-32}
+      MEDIA_INCREMENTAL_LOOKBACK_DAYS: ${MEDIA_INCREMENTAL_LOOKBACK_DAYS:-45}
+    volumes:
+      - ./data:/opt/project/data
+    profiles: ["tools"]
+  airflow:
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      <<: *pipeline_env
+      PYTHONPATH: /opt/project
+      AIRFLOW__CORE__EXECUTOR: SequentialExecutor
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: sqlite:////opt/airflow/state/airflow.db
+      AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "False"
+      AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "True"
+    volumes:
+      - ./app:/opt/project/app:ro
+      - ./sql:/opt/project/sql:ro
+      - ./config:/opt/project/config:ro
+      - ./data:/opt/project/data
+      - ./dags:/opt/airflow/dags:ro
+      - airflow_state:/opt/airflow/state
+      - airflow_logs:/opt/airflow/logs
+    working_dir: /opt/project
+    command: ["bash", "-c", "airflow standalone"]
+    ports:
+      - "127.0.0.1:8080:8080"
+    profiles: ["scheduler"]
+volumes:
+  pgdata:
+  airflow_state:
+  airflow_logs:

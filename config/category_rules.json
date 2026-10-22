@@ -1,0 +1,23 @@
+{
+  "categories": {
+    "GPU": ["gpu", "card đồ họa", "card màn hình", "rtx ", "geforce", "radeon", "graphics card"],
+    "CPU": ["cpu", "ryzen", "vi xử lý", "bộ xử lý", "intel core", "core i5", "core i7", "core i9"],
+    "SSD": ["ssd", "ổ cứng thể rắn", "solid state drive"],
+    "HDD": ["hdd", "ổ cứng cơ", "hard disk", "ổ cứng wd"],
+    "RAM": [" ram ", "ddr4", "ddr5", "bộ nhớ ram", "dram", "camm2"],
+    "NETWORK": ["router", "bộ định tuyến", "switch mạng", "switch cisco", "thiết bị mạng", "wifi", "wi-fi", "tp-link"],
+    "MONITOR": ["màn hình máy tính", "monitor", "display 144hz", "màn hình gaming", "màn hình lg", "ultragear"],
+    "MOTHERBOARD": ["mainboard", "bo mạch chủ", "motherboard"],
+    "PERIPHERAL": ["bàn phím", "chuột máy tính", "keyboard", "mouse gaming", "chuột logitech"],
+    "CAMERA": ["camera giám sát", "camera an ninh", "camera ip", "webcam", "camera hikvision"],
+    "PSU": ["nguồn corsair", "nguồn máy tính", "power supply", "psu"]
+  },
+  "exclude_keywords": ["tiki-taka", "cổ phiếu", "chứng khoán", "giá cổ phiếu", "thị trường chứng khoán"],
+  "queries": {
+    "GPU": "GPU OR RTX OR card đồ họa",
+    "CPU": "CPU OR Ryzen OR vi xử lý",
+    "SSD": "SSD OR ổ cứng",
+    "RAM": "RAM OR DDR5",
+    "NETWORK": "router OR switch OR thiết bị mạng"
+  }
+}

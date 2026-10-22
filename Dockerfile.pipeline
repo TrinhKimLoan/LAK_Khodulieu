@@ -1,0 +1,8 @@
+FROM python:3.11-slim
+WORKDIR /opt/project
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir -r /tmp/requirements.txt
+COPY app /opt/project/app
+COPY sql /opt/project/sql
+COPY config /opt/project/config
+CMD ["python", "-m", "app.cli", "bootstrap"]
