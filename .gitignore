@@ -1,14 +1,28 @@
 .env
 .env.*
 !.env.example
-
-__pycache__/
+*.dump
+*.backup
 *.pyc
+__pycache__/
+*.pem
+*.key
+
+# Python / Jupyter runtime
+
+*.py[cod]
+.ipynb_checkpoints/
 .pytest_cache/
 .venv/
+venv/
 
+# Temporary local outputs, logs, backup and DB dumps
+outputs/
 *.log
 *.dump
 *.backup
 *.sql.gz
+*.before_*
+*.before_*/
+*cleanup_archive*/
 airflow.db

@@ -1,0 +1,7 @@
+services:
+  api:
+    environment:
+      HEALTH_ADMIN_TOKEN: ${HEALTH_ADMIN_TOKEN:?Add HEALTH_ADMIN_TOKEN (20+ chars) in .env}
+      EXCEL_SOURCE_DIR: /srv/excel
+    volumes:
+      - ./data/excel:/srv/excel:ro

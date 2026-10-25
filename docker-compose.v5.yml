@@ -1,0 +1,6 @@
+services:
+  api:
+    environment:
+      EXCEL_SOURCE_DIR: /srv/excel
+    volumes:
+      - ./data/excel:/srv/excel:ro

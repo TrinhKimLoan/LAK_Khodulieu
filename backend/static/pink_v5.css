@@ -1,0 +1,53 @@
+:root{--pink:#ce4d88;--darkpink:#8d315b;--blush:#fff0f6;--line:#f0dce6}
+body{background:#fff7fb!important;color:#3d2438!important}
+.main-area,.content{background:#fff7fb!important}
+.sidebar{background:#44263c!important}
+.brand-mark{background:#eb6ba5!important}
+.nav-item.active{background:#733b5b!important;box-shadow:inset 3px 0 #ff94bd!important}
+.nav-item:hover{background:#643c54!important}
+.topbar,.panel,.stat,.small-card{background:#fff!important;border-color:#f0dce8!important}
+.panel,.stat{box-shadow:0 5px 22px rgba(147,49,99,.055)!important}
+.eyebrow,.breadcrumb b{color:#b63e78!important}
+.eyebrow-line,.bar-fill{background:#da6398!important}
+.bar-fill{background:linear-gradient(90deg,#db5592,#f4a4c5)!important}
+.stat::before{background:#e46aa1!important}
+.stat-symbol{background:#ffedf4!important;color:#bc4c84!important}
+.btn-primary{background:#c84683!important;border-color:#c84683!important;color:white!important}
+.btn-primary:hover{background:#a73569!important}
+.btn-outline:hover{background:#fff0f6!important}
+.tag,.pill{background:#ffeaf3!important;color:#a7376c!important}
+.notice{background:#fff0f6!important;color:#884467!important;border:1px solid #f4d8e5!important}
+.sidebar-footer .online-dot.ok{background:#ff9dbe}
+.field:focus,.date-filters input:focus{border-color:#dd679d!important;box-shadow:0 0 0 3px #e46aa122!important}
+.panel-title{color:#3d2438!important}
+.small-card{padding:20px!important;border-radius:13px!important}
+.bar-row{grid-template-columns:minmax(170px,1.2fr) minmax(90px,2fr) 96px!important;align-items:center}
+.bar-row-label{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;overflow-wrap:anywhere!important;line-height:1.45!important}
+.bar-track{height:12px!important}
+.article-title,.panel,.data-table td,.data-table th{overflow-wrap:anywhere}
+.data-table td{line-height:1.6}
+.v5-segments{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:20px}
+.v5-segment{border:1px solid #f1d5e2;background:#fff;border-radius:15px;padding:22px;min-width:0;box-shadow:0 5px 20px #ac4b7810}
+.v5-segment:nth-child(1){background:#fff7e9;border-color:#f2dec0}
+.v5-segment:nth-child(2){background:#fff0f7;border-color:#f1c2d9}
+.v5-segment:nth-child(3){background:#f8f1ff;border-color:#e5d6ef}
+.v5-segment h3{font-size:14px;color:#7a3657;margin:3px 0 13px;line-height:1.5}
+.v5-segment .value{font-weight:800;font-size:29px;color:#402336}
+.v5-segment .metric{color:#80657b;font-size:12px;line-height:1.75;margin-top:10px}
+.v5-section-heading{font-size:21px;margin:24px 0 15px;color:#512a43}
+.v5-health-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.v5-health{padding:16px;border:1px solid #eddae4;border-radius:11px;background:#fff}
+.v5-health strong{display:block;color:#512a43;margin-bottom:8px}
+.v5-health .healthy{color:#07866c}.v5-health .unhealthy{color:#bb3c53}.v5-health .reachable{color:#ab6930}
+.v5-compact-bars .bar-row{grid-template-columns:minmax(170px,1fr) minmax(90px,1.8fr) 85px!important}
+.v5-panel-note{font-size:12px;line-height:1.65;color:#836e80}
+.v5-metric-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin:15px 0}
+.v5-metric-cards>div{border:1px solid #ead2e0;background:#fffafd;padding:16px;border-radius:11px}
+.v5-metric-cards b{font-size:18px;display:block;margin:8px 0;color:#9c366c}
+.v5-prediction{margin:10px 0 0;font-size:16px;color:#9b3a71;font-weight:700}
+.v5-form{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:end}
+.v5-form .control-label select,.v5-form .control-label input{width:100%;min-width:0}
+.v5-form .btn{width:100%}
+.v5-chart-caption{font-size:11px;color:#806d7b;line-height:1.6}
+@media(max-width:900px){.v5-segments,.v5-health-grid,.v5-metric-cards,.v5-form{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.v5-segments,.v5-health-grid,.v5-metric-cards,.v5-form{grid-template-columns:1fr}.bar-row,.v5-compact-bars .bar-row{grid-template-columns: minmax(100px,1fr) minmax(70px,1.3fr) 66px!important;gap:5px!important}.content{padding:18px 12px!important}}

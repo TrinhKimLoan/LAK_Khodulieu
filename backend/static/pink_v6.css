@@ -1,0 +1,20 @@
+/* V6 fixes for truncated labels and non-informative full-length bars */
+.stat,.stat-value,.small-card,.panel{min-width:0!important}
+.stat-value{white-space:normal!important;overflow:visible!important;text-overflow:unset!important;overflow-wrap:anywhere!important;word-break:normal!important;font-size:clamp(19px,1.75vw,27px)!important;line-height:1.28!important;padding-right:0!important}
+.stat{overflow:visible!important}
+.stat-label{display:block;max-width:calc(100% - 37px)}
+.v5-segments{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.v5-segment{min-width:0!important}
+.v5-segment .value{font-size:clamp(21px,2vw,28px)}
+.v5-health-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.v6-health-status{padding:16px;border:1px solid #efd8e4;border-radius:10px;background:#fffafc;font-size:12px;line-height:1.65;overflow-wrap:anywhere}
+.v6-health-status strong{display:block;font-size:13px;margin-bottom:5px}
+.v6-health-status .healthy{color:#167e65}.v6-health-status .unhealthy{color:#b23a56}.v6-health-status .reachable{color:#9a6b26}
+.v6-health-meta{margin-top:10px;color:#937f8c;font-size:11px}
+.v6-stats-panel{padding:18px!important}
+.v6-warehouse-table th,.v6-warehouse-table td{white-space:normal!important;overflow-wrap:anywhere!important}
+.v6-warehouse-table{width:100%;border-collapse:collapse}
+.v6-warehouse-table th,.v6-warehouse-table td{padding:13px 10px;border-bottom:1px solid #f1e5eb;text-align:left;font-size:12px}
+.v6-warehouse-table td:last-child,.v6-warehouse-table th:last-child{text-align:right;font-weight:650}
+.v6-failure{padding:13px 14px;background:#fff0f4;border-radius:9px;color:#873d58;margin:8px 0;font-size:12px}
+@media(max-width:900px){.v5-segments,.v5-health-grid{grid-template-columns:1fr!important}}

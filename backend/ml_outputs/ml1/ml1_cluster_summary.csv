@@ -1,0 +1,4 @@
+﻿cluster_id,customers,customer_share,recency_days,frequency,monetary,mean_monetary,revenue_share,R_z,logF_z,logM_z,segment_name
+0,1335,0.4068,471.0,2.0,78000000.0,105268464.4195,0.2273,-0.4137,-0.3578,-0.2021,Giá trị trung bình
+1,968,0.2949,226.0,5.0,357400000.0,427779855.3719,0.6697,-0.715,1.2851,1.0255,Giá trị cao – mua thường xuyên – mua gần đây
+2,979,0.2983,1479.0,1.0,35200000.0,65035240.0409,0.103,1.2707,-0.7812,-0.7371,Giá trị thấp – mua ít – lâu không quay lại

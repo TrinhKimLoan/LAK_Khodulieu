@@ -1,0 +1,6 @@
+﻿,MAE,RMSE,R2
+Baseline: TB theo loại giao hàng,0.91366,1.15851,0.80363
+RF chỉ dùng loại giao hàng,0.91382,1.15856,0.80362
+Ridge (mọi đặc trưng),0.92015,1.16141,0.80265
+Random Forest (mọi đặc trưng),0.92099,1.15833,0.8037
+Baseline: trung vị,2.05831,2.70017,-0.06671

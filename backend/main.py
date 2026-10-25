@@ -161,3 +161,32 @@ def pipeline_runs(limit:int=Query(30,ge=1,le=100),pipeline:str|None=None):
     summary=sql_all('''SELECT change_type,COUNT(*)::int AS events FROM ops.news_change_log GROUP BY change_type ORDER BY change_type''')
     backfill=sql_all('''SELECT status,COUNT(*)::int AS months FROM ops.news_backfill_months GROUP BY status ORDER BY status''')
     return {'runs':rows,'change_counts':summary,'historical_backfill':backfill,'note':'Airflow own task status is stored in its separate metadata DB; this endpoint shows pipeline-recorded runs only.'}
+
+# Serve the dashboard from the same origin as the API (no Node server/CORS needed).
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
+app.mount('/static', StaticFiles(directory='static'), name='static')
+
+@app.get('/', include_in_schema=False)
+def dashboard_index():
+    return FileResponse('static/index.html')
+
+from ml_api import router as ml_router
+app.include_router(ml_router)
+
+# EcomInsight UI upgrade routes
+from warehouse_extra import router as warehouse_router
+app.include_router(warehouse_router)
+
+# EcomInsight V5 addons
+from health_local import router as health_router
+from shipping_options import router as shipping_options_router
+app.include_router(health_router)
+app.include_router(shipping_options_router)
+
+# EcomInsight V6 health endpoint
+from health_v6 import router as health_router_v6
+app.include_router(health_router_v6)
+
+from product_prices_v7 import router as prices_router_v7
+app.include_router(prices_router_v7)
